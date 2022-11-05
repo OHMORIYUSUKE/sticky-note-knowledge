@@ -1,0 +1,27 @@
+version: "3"
+services:
+  db:
+    build: ./db
+    platform: "linux/amd64"
+    volumes:
+      - ./db/save_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: trpc
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_USER: test
+      PMA_PASSWORD: test
+    restart: always
+    ports:
+      - 3030:80
+    depends_on:
+      - db
