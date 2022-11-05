@@ -1,14 +1,24 @@
 import { TextArea, HStack, Box } from "native-base";
 import { FlatList, Text, StatusBar, SectionList, View } from "react-native";
 import { book } from "@prisma/client";
-
-import getBookAll from "../lib/getBookAll";
-import { trpc } from "../trpc";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Book } from "../lib/Book";
 
 const BookList = () => {
-  const { bookDataList, isFetched } = trpc.useQuery(["getBookAll"]);
+  const [books, setBooks] = useState<Book[] | null>(null);
 
-  if (!isFetched) return <Text>loading</Text>;
+  useEffect(() => {
+    const url = axios
+      .get("http://localhost:3000/trpc/getBookAll")
+      .then((data) => {
+        setBooks(data.data.result.data);
+      })
+      .catch((err) => {
+        console.log("err:", err);
+      });
+  }, []);
+
   const DATA = [
     {
       title: "Main dishes",
@@ -28,7 +38,7 @@ const BookList = () => {
     },
   ];
 
-  const Item = ({ title }) => (
+  const Item = ({ title }: any) => (
     <View>
       <Text>{title}</Text>
     </View>
@@ -36,12 +46,6 @@ const BookList = () => {
   return (
     <>
       <Text>読みたい本を選択</Text>
-      {/* <FlatList
-        data={bookDataList?.map((bookData: book) => (
-          <li key={bookData.id}>{bookData.title}</li>
-        ))}
-      /> */}
-      <Text>{bookDataList}</Text>
 
       <SectionList
         sections={DATA}
