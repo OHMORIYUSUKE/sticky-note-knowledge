@@ -38,6 +38,6 @@ model user {
 model book {
   id String @unique
   title String
-  text String
+  text String @db.Text
   createdAt DateTime @default(now())
 }
