@@ -8,6 +8,8 @@ import { Provider as PaperProvider } from "react-native-paper";
 import Header from "./Header";
 import Top from "./pages/BookView";
 import BookView from "./pages/BookView";
+import BookList from "./pages/BookList";
+
 const client = new QueryClient();
 const url = "http://localhost:3000/trpc";
 
@@ -20,7 +22,7 @@ const App = () => {
           <QueryClientProvider client={client}>
             <Header />
             <SafeAreaView style={styles.container}>
-              <BookView />
+              <BookList />
             </SafeAreaView>
           </QueryClientProvider>
         </trpc.Provider>
