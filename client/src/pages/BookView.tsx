@@ -7,11 +7,11 @@ const source = {
   html: `ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。`,
 };
 
-const BookView = () => {
+const BookView = ({ navigation }: any) => {
   const { width } = useWindowDimensions();
   return (
     <>
-      <Header />
+      <Header navigation={navigation} />
       <HStack space={3} justifyContent="center">
         <Text>Title</Text>
         <Text>初心者が作る！HTML入門</Text>
