@@ -13,6 +13,19 @@ import {
   Image,
 } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
+import Top from "./pages/Top";
+const HomeRoute = () => (
+  <>
+    <Top />
+  </>
+);
+
+// TODO: 各ページの実装が終わり次第コンポーネントを設定
+const MapRoute = () => <Text>Map</Text>;
+
+const AccountRoute = () => <Text>Account</Text>;
+
+const SettingRoute = () => <Text>Seting</Text>;
 
 const Header = () => {
   return (
@@ -27,38 +40,36 @@ const Header = () => {
         alignItems="center"
         w="100%"
       >
-        <HStack>
-          <IconButton
-            icon={
-              <Image
-                source={{
-                  uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_top.png",
-                }}
-                size="sm"
-              />
-            }
-          />
-          <IconButton
-            icon={
-              <Image
-                source={{
-                  uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_mypage.png",
-                }}
-                size="sm"
-              />
-            }
-          />
-          <IconButton
-            icon={
-              <Image
-                source={{
-                  uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_book.png",
-                }}
-                size="sm"
-              />
-            }
-          />
-        </HStack>
+        <IconButton
+          icon={
+            <Image
+              source={{
+                uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_top.png",
+              }}
+              size="sm"
+            />
+          }
+        />
+        <IconButton
+          icon={
+            <Image
+              source={{
+                uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_mypage.png",
+              }}
+              size="sm"
+            />
+          }
+        />
+        <IconButton
+          icon={
+            <Image
+              source={{
+                uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_book.png",
+              }}
+              size="sm"
+            />
+          }
+        />
       </HStack>
     </>
   );
