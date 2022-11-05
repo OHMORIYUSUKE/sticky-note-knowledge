@@ -74,7 +74,7 @@ async function main() {
 
   // book
   try {
-    const buff = fs.readFileSync("book1.html", "utf8");
+    const buff = fs.readFileSync("strage/book1.html", "utf8");
     const book = await prisma.book.create({
       data: {
         id: book01,
@@ -87,7 +87,7 @@ async function main() {
   }
   //
   try {
-    const buff = fs.readFileSync("book2.html", "utf8");
+    const buff = fs.readFileSync("strage/book2.html", "utf8");
     const book = await prisma.book.create({
       data: {
         id: book02,
@@ -100,7 +100,7 @@ async function main() {
   }
   //
   try {
-    const buff = fs.readFileSync("book3.html", "utf8");
+    const buff = fs.readFileSync("strage/book3.html", "utf8");
     const book = await prisma.book.create({
       data: {
         id: book03,
