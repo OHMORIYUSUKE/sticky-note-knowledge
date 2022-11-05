@@ -1,3 +1,5 @@
+import "react-native-gesture-handler";
+
 import { QueryClientProvider, QueryClient } from "react-query";
 import { trpc } from "./trpc";
 import { NativeBaseProvider } from "native-base";
@@ -8,6 +10,12 @@ import Header from "./Header";
 import Top from "./pages/BookView";
 import BookView from "./pages/BookView";
 import BookList from "./pages/BookList";
+import { NavigationContainer } from "@react-navigation/native";
+
+import { createStackNavigator } from "@react-navigation/stack";
+import MyPage from "./pages/MyPage";
+
+const Stack = createStackNavigator();
 
 const client = new QueryClient();
 const url = "http://localhost:3000/trpc";
@@ -18,10 +26,13 @@ const App = () => {
     <NativeBaseProvider>
       <trpc.Provider queryClient={client} client={trpcClient}>
         <QueryClientProvider client={client}>
-          <Header />
-          <SafeAreaView style={styles.container}>
-            <BookView />
-          </SafeAreaView>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="BookView">
+              <Stack.Screen name="BookView" component={BookView} />
+              <Stack.Screen name="MyPage" component={MyPage} />
+              <Stack.Screen name="BookList" component={BookList} />
+            </Stack.Navigator>
+          </NavigationContainer>
         </QueryClientProvider>
       </trpc.Provider>
     </NativeBaseProvider>

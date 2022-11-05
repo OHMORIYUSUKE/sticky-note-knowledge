@@ -13,24 +13,11 @@ import {
   Image,
 } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
-import Top from "./pages/Top";
-const HomeRoute = () => (
-  <>
-    <Top />
-  </>
-);
-
-// TODO: 各ページの実装が終わり次第コンポーネントを設定
-const MapRoute = () => <Text>Map</Text>;
-
-const AccountRoute = () => <Text>Account</Text>;
-
-const SettingRoute = () => <Text>Seting</Text>;
 
 const Header = () => {
   return (
     <>
-      <StatusBar bg="#A3BD75" barStyle="light-content" />
+      <StatusBar backgroundColor={"#A3BD75"} barStyle="light-content" />
       <Box safeAreaTop bg="#A3BD75" />
       <HStack
         bg="#A3BD75"
@@ -41,34 +28,25 @@ const Header = () => {
         w="100%"
       >
         <IconButton
-          icon={
-            <Image
-              source={{
-                uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_top.png",
-              }}
-              size="sm"
-            />
-          }
+          icon={<Image source={require("./asset/btn_top.png")} size="sm" />}
+          style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
+          onPress={() => {
+            navigation.navigate("Detail");
+          }}
         />
         <IconButton
-          icon={
-            <Image
-              source={{
-                uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_mypage.png",
-              }}
-              size="sm"
-            />
-          }
+          icon={<Image source={require("./asset/btn_mypage.png")} size="sm" />}
+          style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
+          onPress={() => {
+            navigation.navigate("Detail");
+          }}
         />
         <IconButton
-          icon={
-            <Image
-              source={{
-                uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_book.png",
-              }}
-              size="sm"
-            />
-          }
+          icon={<Image source={require("./asset/btn_book.png")} size="sm" />}
+          style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
+          onPress={() => {
+            navigation.navigate("Detail");
+          }}
         />
       </HStack>
     </>
