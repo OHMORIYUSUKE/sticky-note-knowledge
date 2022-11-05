@@ -7,6 +7,8 @@ import { StyleSheet, SafeAreaView } from "react-native";
 import Header from "./Header";
 import Top from "./pages/BookView";
 import BookView from "./pages/BookView";
+import BookList from "./pages/BookList";
+
 const client = new QueryClient();
 const url = "http://localhost:3000/trpc";
 

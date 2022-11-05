@@ -4,7 +4,6 @@ import cors from "cors";
 
 import { appRouter as router } from "./router";
 import { createContext } from "./context";
-import { initDb } from "./service";
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,7 +15,6 @@ app.use((req, _res, next) => {
 
   next();
 });
-initDb();
 
 app.use("/trpc", createExpressMiddleware({ router, createContext }));
 
