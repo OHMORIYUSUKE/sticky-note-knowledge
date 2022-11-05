@@ -5,7 +5,7 @@ import { book } from "@prisma/client";
 
 export const appRouter = trpc
   .router() // ルーターの生成
-  .query("getBook", {
+  .query("getBookById", {
     input: z.object({
       id: z.string(),
     }),
