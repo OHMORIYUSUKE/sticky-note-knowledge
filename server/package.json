@@ -24,7 +24,7 @@
     "dev": "ts-node-dev server.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:seed": "ts-node prisma/seed.ts"
+    "prisma:seed": "ts-node-dev prisma/seed.ts"
   },
   "licenses": [
     {
