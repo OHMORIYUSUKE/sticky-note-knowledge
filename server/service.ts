@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import { book, PrismaClient, stickyNote } from "@prisma/client";
-import { type } from "os";
+
 const prisma = new PrismaClient();
 
 export const stickyNoteKnowledgeService = {
@@ -24,6 +24,65 @@ export const stickyNoteKnowledgeService = {
       },
     });
     return dataList;
+  },
+  async getStickyNoteById(
+    id: string
+  ): Promise<{ data: stickyNote; like: number } | null> {
+    const data = await prisma.stickyNote.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    if (data === null) {
+      return null;
+    }
+    const likesList = await prisma.stickyNoteLike.findMany({
+      where: {
+        stickyNoteId: id,
+      },
+    });
+    return {
+      data: data,
+      like: likesList.length,
+    };
+  },
+  async addStickyNoteLikeById(
+    stickyNoteId: string,
+    userId: string
+  ): Promise<{ data: stickyNote; like: number } | null> {
+    const data = await prisma.stickyNoteLike.create({
+      data: {
+        userId: userId,
+        stickyNoteId: stickyNoteId,
+      },
+    });
+    const res = await this.getStickyNoteById(stickyNoteId);
+    return res;
+  },
+  async addStickyNote(
+    text: string,
+    color: string,
+    userId: string,
+    bookId: string,
+    yCoordinates: number,
+    xCoordinates: number
+  ): Promise<{ data: stickyNote; like: number } | null> {
+    const stickyNoteId = uuid();
+    const data = await prisma.stickyNote.create({
+      data: {
+        text: text,
+        color: color,
+        userId: userId,
+        id: stickyNoteId,
+        bookId: bookId,
+        yCoordinates: yCoordinates,
+        xCoordinates: xCoordinates,
+      },
+    });
+    return {
+      data: data,
+      like: 0,
+    };
   },
 };
 
