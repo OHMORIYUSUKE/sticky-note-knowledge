@@ -84,55 +84,29 @@ export const stickyNoteKnowledgeService = {
       like: 0,
     };
   },
-};
-
-// --------
-export type Todo = {
-  id: string;
-  text: string;
-  done: boolean;
-};
-
-const db = new Map<string, Todo>();
-
-export const todoService = {
-  getById(id: string): Todo | undefined {
-    return db.get(id);
-  },
-  getAll(): Todo[] {
-    return Array.from(db.values());
-  },
-  async addTodo(id: string, text: string): Promise<Todo> {
-    const todo = { id, text, done: false };
-    db.set(id, todo);
-    // prisma
-    const one = await prisma.todo.create({
-      data: {
-        id: todo.id,
-        text: todo.text,
-        done: todo.done,
+  // my page
+  async getLikedStickyNoteByUserId(id: string): Promise<stickyNote[] | null> {
+    const likedList = await prisma.stickyNoteLike.findMany({
+      where: {
+        userId: id,
       },
     });
-    return todo;
-  },
-  async update(id: string, todo: Todo): Promise<Todo> {
-    if (this.getById(id)) {
-      const updatedTodo = { ...todo, id };
-      db.set(id, updatedTodo);
-      return updatedTodo;
+    let resultList: stickyNote[] = [];
+    for (let i = 0; i < likedList.length; i++) {
+      const likeData = likedList[i];
+      const stickyNotedata = await this.getStickyNoteById(
+        likeData.stickyNoteId
+      );
+      resultList.push(stickyNotedata?.data!);
     }
-    return this.addTodo(id, todo.text);
+    return resultList;
   },
-  delete(id: string): boolean {
-    return db.delete(id);
+  async getStickyNoteByUserId(id: string): Promise<stickyNote[] | null> {
+    const data = await prisma.stickyNote.findMany({
+      where: {
+        userId: id,
+      },
+    });
+    return data;
   },
-};
-
-export const initDb = (): void => {
-  let id = uuid();
-  db.set(id, { id, text: "buy milk", done: false });
-  id = uuid();
-  db.set(id, { id, text: "do laundry", done: false });
-  id = uuid();
-  db.set(id, { id, text: "pick up books in liburary", done: false });
 };
