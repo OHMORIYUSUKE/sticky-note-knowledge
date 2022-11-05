@@ -19,35 +19,33 @@ import { StackActions } from "@react-navigation/native";
 const Header = ({ navigation }: any) => {
   return (
     <>
-      <StatusBar backgroundColor={"#A3BD75"} barStyle="light-content" />
-      <Box safeAreaTop bg="#A3BD75" />
       <HStack
         bg="#A3BD75"
         py="3"
-        px="20"
+        px="16"
         justifyContent="space-between"
         alignItems="center"
         w="100%"
       >
         <IconButton
           icon={<Image source={require("./asset/btn_top.png")} size="sm" />}
-          style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
+          style={{ width: 66, height: 58 }}
           onPress={() => {
             navigation.navigate("Top");
           }}
         />
         <IconButton
-          icon={<Image source={require("./asset/btn_mypage.png")} size="sm" />}
-          style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
+          icon={<Image source={require("./asset/btn_book.png")} size="sm" />}
+          style={{ width: 66, height: 58 }}
           onPress={() => {
-            navigation.navigate("MyPage");
+            navigation.navigate("BookList");
           }}
         />
         <IconButton
-          icon={<Image source={require("./asset/btn_book.png")} size="sm" />}
-          style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
+          icon={<Image source={require("./asset/btn_mypage.png")} size="sm" />}
+          style={{ width: 66, height: 58 }}
           onPress={() => {
-            navigation.navigate("BookList");
+            navigation.navigate("MyPage");
           }}
         />
       </HStack>
