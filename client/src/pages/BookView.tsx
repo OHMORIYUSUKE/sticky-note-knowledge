@@ -2,6 +2,7 @@ import { TextArea, HStack, Box } from "native-base";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useWindowDimensions } from "react-native";
 import RenderHtml from "react-native-render-html";
+import Header from "../Header";
 const source = {
   html: `ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。この<span data-yomi="ぶんしょう">文章</span>はダミーです。文字の大きさ、量、字間、行間等を<span data-yomi="かくにん">確認</span>するために入れています。`,
 };
@@ -10,6 +11,7 @@ const BookView = () => {
   const { width } = useWindowDimensions();
   return (
     <>
+      <Header />
       <HStack space={3} justifyContent="center">
         <Text>Title</Text>
         <Text>初心者が作る！HTML入門</Text>

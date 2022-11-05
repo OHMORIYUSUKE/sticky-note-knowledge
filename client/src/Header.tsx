@@ -13,19 +13,6 @@ import {
   Image,
 } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
-import Top from "./pages/Top";
-const HomeRoute = () => (
-  <>
-    <Top />
-  </>
-);
-
-// TODO: 各ページの実装が終わり次第コンポーネントを設定
-const MapRoute = () => <Text>Map</Text>;
-
-const AccountRoute = () => <Text>Account</Text>;
-
-const SettingRoute = () => <Text>Seting</Text>;
 
 const Header = () => {
   return (
@@ -42,15 +29,24 @@ const Header = () => {
       >
         <IconButton
           icon={<Image source={require("./asset/btn_top.png")} size="sm" />}
-          style={{ width: 66, height: 58 }}
+          style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
+          onPress={() => {
+            navigation.navigate("Detail");
+          }}
         />
         <IconButton
           icon={<Image source={require("./asset/btn_mypage.png")} size="sm" />}
           style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
+          onPress={() => {
+            navigation.navigate("Detail");
+          }}
         />
         <IconButton
           icon={<Image source={require("./asset/btn_book.png")} size="sm" />}
           style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
+          onPress={() => {
+            navigation.navigate("Detail");
+          }}
         />
       </HStack>
     </>
