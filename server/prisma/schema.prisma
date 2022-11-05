@@ -17,3 +17,27 @@ model Todo {
   text String
   done Boolean
 }
+
+model stickyNote {
+  id String @unique
+  text String
+  color String
+  userId String 
+  yCoordinates Int
+  xCoordinates Int
+  createdAt DateTime @default(now())
+}
+
+
+model user {
+  id String @unique
+  name String
+  createdAt DateTime @default(now())
+}
+
+model book {
+  id String @unique
+  title String
+  text String
+  createdAt DateTime @default(now())
+}
