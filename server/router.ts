@@ -73,6 +73,15 @@ export const appRouter = trpc
       return data;
     },
   })
+  .query("getUserById", {
+    input: z.object({
+      id: z.string(),
+    }),
+    resolve: async ({ input }) => {
+      const data = await stickyNoteKnowledgeService.getUserById(input.id);
+      return data;
+    },
+  })
   // post
   .mutation("stickyNoteLike", {
     input: z.object({
