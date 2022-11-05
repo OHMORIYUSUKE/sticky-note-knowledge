@@ -3,24 +3,29 @@ import { trpc } from "./trpc";
 import { NativeBaseProvider } from "native-base";
 import { useState } from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
+import { Provider as PaperProvider } from "react-native-paper";
+
 import Header from "./Header";
-import Top from "./Top";
+import Top from "./pages/BookView";
+import BookView from "./pages/BookView";
 const client = new QueryClient();
 const url = "http://localhost:3000/trpc";
 
 const App = () => {
   const [trpcClient] = useState(() => trpc.createClient({ url }));
   return (
-    <NativeBaseProvider>
-      <trpc.Provider queryClient={client} client={trpcClient}>
-        <QueryClientProvider client={client}>
-          <Header />
-          <SafeAreaView style={styles.container}>
-            <Top />
-          </SafeAreaView>
-        </QueryClientProvider>
-      </trpc.Provider>
-    </NativeBaseProvider>
+    <PaperProvider>
+      <NativeBaseProvider>
+        <trpc.Provider queryClient={client} client={trpcClient}>
+          <QueryClientProvider client={client}>
+            <Header />
+            <SafeAreaView style={styles.container}>
+              <BookView />
+            </SafeAreaView>
+          </QueryClientProvider>
+        </trpc.Provider>
+      </NativeBaseProvider>
+    </PaperProvider>
   );
 };
 
