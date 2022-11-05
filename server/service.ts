@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { book, PrismaClient, stickyNote } from "@prisma/client";
+import { book, PrismaClient, stickyNote, user } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -105,6 +105,15 @@ export const stickyNoteKnowledgeService = {
     const data = await prisma.stickyNote.findMany({
       where: {
         userId: id,
+      },
+    });
+    return data;
+  },
+  // user info
+  async getUserById(id: string): Promise<user | null> {
+    const data = await prisma.user.findUnique({
+      where: {
+        id: id,
       },
     });
     return data;
