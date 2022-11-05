@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@prisma/client": "^4.5.0",
+    "@react-navigation/bottom-tabs": "^6.4.0",
+    "@react-navigation/native": "^6.0.13",
     "@trpc/client": "^9.27.2",
     "@trpc/react": "^9.27.2",
     "@trpc/server": "^9.27.2",
@@ -29,7 +31,6 @@
     "react-dom": "^18.2.0",
     "react-native": "^0.70.4",
     "react-native-axios": "^0.17.1",
-    "react-native-paper": "^4.12.5",
     "react-native-render-html": "^6.3.4",
     "react-native-safe-area-context": "3.3.2",
     "react-native-svg": "12.1.1",
