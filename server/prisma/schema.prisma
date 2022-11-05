@@ -42,3 +42,9 @@ model book {
   text String @db.Text
   createdAt DateTime @default(now())
 }
+
+model stickyNoteLike {
+  userId String
+  stickyNoteId String
+  @@unique([userId, stickyNoteId])
+}

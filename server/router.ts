@@ -30,7 +30,6 @@ export const appRouter = trpc
       return data;
     },
   })
-  //
   .query("getStickyNoteByBookId", {
     input: z.object({
       id: z.string(),
@@ -38,6 +37,50 @@ export const appRouter = trpc
     resolve: async ({ input }) => {
       const data = await stickyNoteKnowledgeService.getStickyNoteByBookId(
         input.id
+      );
+      return data;
+    },
+  })
+  .query("getStickyNoteByStickyNoteId", {
+    input: z.object({
+      id: z.string(),
+    }),
+    resolve: async ({ input }) => {
+      const data = await stickyNoteKnowledgeService.getStickyNoteById(input.id);
+      return data;
+    },
+  })
+  // post
+  .mutation("stickyNoteLike", {
+    input: z.object({
+      stickyNoteId: z.string(),
+      userId: z.string(),
+    }),
+    resolve: async ({ input }) => {
+      const data = await stickyNoteKnowledgeService.addStickyNoteLikeById(
+        input.stickyNoteId,
+        input.userId
+      );
+      return data;
+    },
+  })
+  .mutation("stickyNote", {
+    input: z.object({
+      text: z.string(),
+      color: z.string(),
+      userId: z.string(),
+      bookId: z.string(),
+      yCoordinates: z.number(),
+      xCoordinates: z.number(),
+    }),
+    resolve: async ({ input }) => {
+      const data = await stickyNoteKnowledgeService.addStickyNote(
+        input.text,
+        input.color,
+        input.userId,
+        input.bookId,
+        input.yCoordinates,
+        input.xCoordinates
       );
       return data;
     },
