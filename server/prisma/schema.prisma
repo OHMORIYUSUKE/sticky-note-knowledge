@@ -23,6 +23,7 @@ model stickyNote {
   text String
   color String
   userId String 
+  bookId String
   yCoordinates Int
   xCoordinates Int
   createdAt DateTime @default(now())

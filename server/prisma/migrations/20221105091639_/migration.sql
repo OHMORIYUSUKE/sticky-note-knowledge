@@ -13,6 +13,7 @@ CREATE TABLE `stickyNote` (
     `text` VARCHAR(191) NOT NULL,
     `color` VARCHAR(191) NOT NULL,
     `userId` VARCHAR(191) NOT NULL,
+    `bookId` VARCHAR(191) NOT NULL,
     `yCoordinates` INTEGER NOT NULL,
     `xCoordinates` INTEGER NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),

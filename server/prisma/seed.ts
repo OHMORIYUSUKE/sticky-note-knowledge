@@ -8,10 +8,12 @@ const prisma = new PrismaClient();
 
 async function main() {
   //  note
-  let userId01 = uuid();
+  const userId01 = uuid();
+  const book01 = uuid();
   const oneNote = await prisma.stickyNote.create({
     data: {
       id: uuid(),
+      bookId: book01,
       text: "AAAA",
       color: "red",
       userId: userId01,
@@ -20,23 +22,27 @@ async function main() {
     },
   });
 
-  let userId02 = uuid();
+  const userId02 = uuid();
+  const book02 = uuid();
   const twoNote = await prisma.stickyNote.create({
     data: {
       id: uuid(),
       text: "BBBB",
       color: "red",
+      bookId: book02,
       userId: userId02,
       yCoordinates: 100,
       xCoordinates: 200,
     },
   });
 
-  let userId03 = uuid();
+  const userId03 = uuid();
+  const book03 = uuid();
   const threeNote = await prisma.stickyNote.create({
     data: {
       id: uuid(),
       text: "CCCC",
+      bookId: book03,
       color: "red",
       userId: userId03,
       yCoordinates: 100,
@@ -71,7 +77,7 @@ async function main() {
     const buff = fs.readFileSync("book1.html", "utf8");
     const book = await prisma.book.create({
       data: {
-        id: uuid(),
+        id: book01,
         title: "book1",
         text: buff,
       },
@@ -84,7 +90,7 @@ async function main() {
     const buff = fs.readFileSync("book2.html", "utf8");
     const book = await prisma.book.create({
       data: {
-        id: uuid(),
+        id: book02,
         title: "book2",
         text: buff,
       },
@@ -97,7 +103,7 @@ async function main() {
     const buff = fs.readFileSync("book3.html", "utf8");
     const book = await prisma.book.create({
       data: {
-        id: uuid(),
+        id: book03,
         title: "book3",
         text: buff,
       },
