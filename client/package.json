@@ -28,9 +28,11 @@
     "expo": "~46.0.13",
     "expo-status-bar": "~1.4.0",
     "react-native-axios": "^0.17.1",
-    "react-native-paper": "5.0.0-rc.6",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-web": "~0.18.7"
+    "react-native-web": "~0.18.7",
+    "native-base": "^3.4.21",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-svg": "12.1.1"
   },
   "devDependencies": {
     "@types/react-dom": "^18.0.6",
