@@ -3,14 +3,6 @@ import { z } from "zod";
 import { stickyNoteKnowledgeService } from "./service";
 import { book } from "@prisma/client";
 
-const sleep = async (sec: number) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(null);
-    }, sec * 1000);
-  });
-};
-
 export const appRouter = trpc
   .router() // ルーターの生成
   .query("getBook", {
