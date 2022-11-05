@@ -1,10 +1,4 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import registerRootComponent from "expo/build/launch/registerRootComponent";
+import App from "./App";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-)
+registerRootComponent(App);

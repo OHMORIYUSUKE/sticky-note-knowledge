@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { trpc } from "./trpc";
+import { TextInput, Button } from "react-native";
 
 export function Form() {
   const mutation = trpc.useMutation("addTodo");
@@ -16,9 +17,14 @@ export function Form() {
   };
 
   return (
-    <div>
-      <input ref={inputRef} type="text" placeholder="add something" />
-      <button onClick={handleClick}>ADD</button>
-    </div>
+    <>
+      <TextInput ref={inputRef} value={"add something"} />
+      <Button
+        onPress={handleClick}
+        title="Add"
+        color="#841584"
+        accessibilityLabel="Add"
+      />
+    </>
   );
 }
