@@ -2,7 +2,8 @@ import * as trpc from "@trpc/server";
 import { z } from "zod";
 import { v4 as uuid } from "uuid";
 
-import { Todo, todoService } from "./service";
+import { Todo, todoService, stickyNoteKnowledgeService } from "./service";
+import { book } from "@prisma/client";
 
 const sleep = async (sec: number) => {
   return new Promise((resolve, reject) => {
@@ -14,11 +15,34 @@ const sleep = async (sec: number) => {
 
 export const appRouter = trpc
   .router() // ルーターの生成
-  .query("hello", {
-    resolve() {
-      return { message: "hello world" };
+  .query("getBook", {
+    input: z.object({
+      id: z.string(),
+    }),
+    resolve: async ({ input }) => {
+      const data = await stickyNoteKnowledgeService.getBookById(input.id);
+      return data;
     },
   })
+  .query("getBookAll", {
+    async resolve(): Promise<book[]> {
+      const data = await stickyNoteKnowledgeService.getBookAll();
+      return data;
+    },
+  })
+  //
+  .query("getStickyNoteByBookId", {
+    input: z.object({
+      id: z.string(),
+    }),
+    resolve: async ({ input }) => {
+      const data = await stickyNoteKnowledgeService.getStickyNoteByBookId(
+        input.id
+      );
+      return data;
+    },
+  })
+  // ---------------------------------------------
   .query(
     "getTodoList", // エンドポイント名: getTodoList
     {

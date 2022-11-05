@@ -1,8 +1,33 @@
 import { v4 as uuid } from "uuid";
 
-import { PrismaClient } from "@prisma/client";
+import { book, PrismaClient, stickyNote } from "@prisma/client";
+import { type } from "os";
 const prisma = new PrismaClient();
 
+export const stickyNoteKnowledgeService = {
+  async getBookById(id: string): Promise<book | null> {
+    const data = await prisma.book.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    return data;
+  },
+  async getBookAll(): Promise<book[]> {
+    const data = await prisma.book.findMany();
+    return data;
+  },
+  async getStickyNoteByBookId(id: string): Promise<stickyNote[] | null> {
+    const dataList = await prisma.stickyNote.findMany({
+      where: {
+        bookId: id,
+      },
+    });
+    return dataList;
+  },
+};
+
+// --------
 export type Todo = {
   id: string;
   text: string;
