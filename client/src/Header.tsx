@@ -30,7 +30,7 @@ const SettingRoute = () => <Text>Seting</Text>;
 const Header = () => {
   return (
     <>
-      <StatusBar bg="#A3BD75" barStyle="light-content" />
+      <StatusBar backgroundColor={"#A3BD75"} barStyle="light-content" />
       <Box safeAreaTop bg="#A3BD75" />
       <HStack
         bg="#A3BD75"
@@ -41,34 +41,16 @@ const Header = () => {
         w="100%"
       >
         <IconButton
-          icon={
-            <Image
-              source={{
-                uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_top.png",
-              }}
-              size="sm"
-            />
-          }
+          icon={<Image source={require("./asset/btn_top.png")} size="sm" />}
+          style={{ width: 66, height: 58 }}
         />
         <IconButton
-          icon={
-            <Image
-              source={{
-                uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_mypage.png",
-              }}
-              size="sm"
-            />
-          }
+          icon={<Image source={require("./asset/btn_mypage.png")} size="sm" />}
+          style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
         />
         <IconButton
-          icon={
-            <Image
-              source={{
-                uri: "/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_book.png",
-              }}
-              size="sm"
-            />
-          }
+          icon={<Image source={require("./asset/btn_book.png")} size="sm" />}
+          style={{ width: 66, height: 58, backgroundColor: "lightblue" }}
         />
       </HStack>
     </>
