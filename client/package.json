@@ -17,6 +17,7 @@
     "storybook": "start-storybook -p 7007"
   },
   "dependencies": {
+    "@prisma/client": "^4.5.0",
     "@trpc/client": "^9.27.2",
     "@trpc/react": "^9.27.2",
     "@trpc/server": "^9.27.2",
