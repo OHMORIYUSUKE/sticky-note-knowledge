@@ -2,7 +2,7 @@ import "react-native-gesture-handler";
 
 import { QueryClientProvider, QueryClient } from "react-query";
 import { trpc } from "./trpc";
-import { NativeBaseProvider } from "native-base";
+import { Container, NativeBaseProvider } from "native-base";
 import { useState } from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
 
@@ -14,7 +14,6 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import MyPage from "./pages/MyPage";
-
 const Stack = createStackNavigator();
 
 const client = new QueryClient();
