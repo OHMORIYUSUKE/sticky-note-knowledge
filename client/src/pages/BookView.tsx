@@ -206,7 +206,9 @@ const BookView = ({ navigation }: any) => {
                   source={source[0]}
                 />
                 {/* TODO: textAreaが変化したら表示する */}
-                {modalVisible && onStick ? (
+                {modalVisible && value !== null ? (
+                  ""
+                ) : (
                   <Box
                     shadow="2"
                     alignSelf="center"
@@ -224,63 +226,70 @@ const BookView = ({ navigation }: any) => {
                   >
                     <Box>{value}</Box>
                   </Box>
-                ) : (
-                  ""
                 )}
               </Box>
             </Stack>
-            <Stack>
-              {/* TODO: Boxをリストにする */}
-              <Box
-                bgColor="white"
-                padding={2}
-                zIndex={1000}
-                shadow="2"
-                width="100"
-                height="50"
-                bg={["red.400", "blue.400"]}
-                _text={{
-                  fontSize: "md",
-                  fontWeight: "bold",
-                  color: "white",
-                }}
-              ></Box>
-              <Modal
-                isOpen={modalVisible}
-                onClose={() => setModalVisible(false)}
-                avoidKeyboard
-              >
-                <Box
-                  bgColor="white"
-                  padding={2}
-                  zIndex={1000}
-                  shadow="2"
-                  width="100"
-                  height="100"
-                  bg={["blue.400"]}
-                  _text={{
-                    fontSize: "md",
-                    fontWeight: "bold",
-                    color: "white",
+            {!onStick ? (
+              ""
+            ) : (
+              <Stack>
+                {/* TODO: Boxをリストにする */}
+                <TouchableOpacity
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
                   }}
                 >
-                  <TextInput
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                      borderWidth: 0,
+                  <Box
+                    bgColor="white"
+                    padding={2}
+                    zIndex={1000}
+                    shadow="2"
+                    width="100"
+                    height="50"
+                    bg={["blue.400"]}
+                    _text={{
+                      fontSize: "md",
+                      fontWeight: "bold",
+                      color: "white",
                     }}
-                    onChangeText={(text) => onChangeText(text)}
-                    value={value}
-                    onEndEditing={() => setOnStick(true)}
-                  />
-                </Box>
-                {/* <Modal.Body>
+                  ></Box>
+                </TouchableOpacity>
+                <Modal
+                  isOpen={modalVisible}
+                  onClose={() => setModalVisible(false)}
+                  avoidKeyboard
+                >
+                  <Box
+                    bgColor="white"
+                    padding={2}
+                    zIndex={1000}
+                    shadow="2"
+                    width="100"
+                    height="100"
+                    bg={["blue.400"]}
+                    _text={{
+                      fontSize: "md",
+                      fontWeight: "bold",
+                      color: "white",
+                    }}
+                  >
+                    <TextInput
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        borderWidth: 0,
+                      }}
+                      onChangeText={(text) => onChangeText(text)}
+                      value={value}
+                      onEndEditing={() => setOnStick(true)}
+                    />
+                  </Box>
+                  {/* <Modal.Body>
                     <FormControl mt="3">
                       <Input />
                     </FormControl>
                   </Modal.Body> */}
-                {/* <Modal.Footer>
+                  {/* <Modal.Footer>
                     <Button
                       flex="1"
                       onPress={() => {
@@ -290,8 +299,8 @@ const BookView = ({ navigation }: any) => {
                       Proceed
                     </Button>
                   </Modal.Footer> */}
-              </Modal>
-              {/* <VStack space={8} alignItems="center">
+                </Modal>
+                {/* <VStack space={8} alignItems="center">
                 {
                   <TouchableOpacity
                     accessible={true}
@@ -317,7 +326,8 @@ const BookView = ({ navigation }: any) => {
                   </TouchableOpacity>
                 }
               </VStack> */}
-            </Stack>
+              </Stack>
+            )}
           </HStack>
         </Container>
       </Center>
@@ -327,7 +337,7 @@ const BookView = ({ navigation }: any) => {
             accessible={true}
             accessibilityLabel="Tap me!"
             onPress={() => {
-              setModalVisible(!modalVisible);
+              setOnStick(true);
             }}
           >
             <Image
