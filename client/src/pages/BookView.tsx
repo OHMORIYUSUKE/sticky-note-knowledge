@@ -283,6 +283,7 @@ const BookView = ({ navigation }: any) => {
                   onClose={() => closeEvent()}
                   avoidKeyboard
                 >
+                  <Text>付箋の追加日:11/8</Text>
                   <Box
                     bgColor="white"
                     padding={2}
