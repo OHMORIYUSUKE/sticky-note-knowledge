@@ -8,17 +8,6 @@ import { Book } from "../lib/Book";
 const BookList = () => {
   const [books, setBooks] = useState<Book[] | null>(null);
 
-  useEffect(() => {
-    const url = axios
-      .get("http://localhost:3000/trpc/getBookAll")
-      .then((data) => {
-        setBooks(data.data.result.data);
-      })
-      .catch((err) => {
-        console.log("err:", err);
-      });
-  }, []);
-
   return (
     <>
       <Center>

@@ -20,10 +20,24 @@ const client = new QueryClient();
 const url = "http://localhost:3000/trpc";
 
 const App = () => {
-  const [trpcClient] = useState(() => trpc.createClient({ url }));
+  const [queryClient] = useState(() => new QueryClient());
+  const [trpcClient] = useState(() =>
+    trpc.createClient({
+      url,
+      async headers() {
+        return {};
+      },
+    })
+  );
+
+  // const { data, isFetched } = trpc.useQuery([
+  //   "getBookById",
+  //   { id: "2607f7db-2134-453d-bff5-d58491798f72" },
+  // ]);
+  // console.log(data);
   return (
     <NativeBaseProvider>
-      <trpc.Provider queryClient={client} client={trpcClient}>
+      <trpc.Provider queryClient={queryClient} client={trpcClient}>
         <QueryClientProvider client={client}>
           <NavigationContainer>
             <Stack.Navigator initialRouteName="Top">
