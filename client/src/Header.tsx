@@ -28,21 +28,31 @@ const Header = ({ navigation }: any) => {
         w="100%"
       >
         <IconButton
-          icon={<Image source={require("./asset/btn_top.png")} size="sm" />}
+          icon={
+            <Image source={require("./asset/btn_top.png")} alt="" size="sm" />
+          }
           style={{ width: 66, height: 58 }}
           onPress={() => {
             navigation.navigate("Top");
           }}
         />
         <IconButton
-          icon={<Image source={require("./asset/btn_book.png")} size="sm" />}
+          icon={
+            <Image source={require("./asset/btn_book.png")} alt="" size="sm" />
+          }
           style={{ width: 66, height: 58 }}
           onPress={() => {
             navigation.navigate("BookList");
           }}
         />
         <IconButton
-          icon={<Image source={require("./asset/btn_mypage.png")} size="sm" />}
+          icon={
+            <Image
+              source={require("./asset/btn_mypage.png")}
+              alt=""
+              size="sm"
+            />
+          }
           style={{ width: 66, height: 58 }}
           onPress={() => {
             navigation.navigate("MyPage");
