@@ -330,7 +330,7 @@ const BookView = ({ navigation }: any) => {
         </Container>
       </Center>
       {/* 付箋追加 */}
-      <VStack space={8} margin={2}>
+      <VStack bgColor="#FDF9EA" space={8}>
         {
           <TouchableOpacity
             accessible={true}
@@ -340,6 +340,7 @@ const BookView = ({ navigation }: any) => {
             }}
           >
             <Image
+              margin={2}
               alt=""
               source={require("/Users/denham/Documents/sticky-note-knowledge/client/src/asset/btn_fusen.png")}
               size="sm"
