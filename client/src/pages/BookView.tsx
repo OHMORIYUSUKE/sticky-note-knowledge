@@ -16,7 +16,7 @@ import {
   IconButton,
   Image,
 } from "native-base";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   Dimensions,
   SafeAreaView,
@@ -28,6 +28,8 @@ import {
   TouchableOpacity,
   View,
   Pressable,
+  Animated,
+  PanResponder,
 } from "react-native";
 import { useWindowDimensions } from "react-native";
 import RenderHtml from "react-native-render-html";
@@ -152,12 +154,20 @@ import { trpc } from "../trpc";
 // ];
 
 const BookView = ({ navigation }: any) => {
+  const pan = useRef(new Animated.ValueXY()).current;
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: () => true,
+      // Animated.eventは2つ目の引数が必要になった。https://stackoverflow.com/questions/64970241/react-native-error-animated-event-now-requires-a-second-argument-for-options
+      onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }], {
+        useNativeDriver: false,
+      }),
+      onPanResponderRelease: () => {
+        Animated.spring(pan, { toValue: { x: 0, y: 0 } }).start();
+      },
+    })
+  ).current;
   const [contentHeight, setContentHeight] = useState(0);
-  const handleContentSizeChange = (width, height) => {
-    setContentHeight(height);
-  };
-  // const { width, height } = Dimensions.get("window"); // hooksのuseWindowDimensions()を用いてもwidht, heightを取得する事が出来る
-  // const scrollEnabled = contentHeight > height;
 
   const [value, onChangeText] = useState("");
   const [onStick, setOnStick] = useState(false);
@@ -230,25 +240,33 @@ const BookView = ({ navigation }: any) => {
                 {/* 画面上に出現する付箋 */}
                 {/* TODO: textAreaが変化したら表示する */}
                 {!onStick ? (
-                  <Text>hoge</Text>
+                  <Text>hogeaaa</Text>
                 ) : (
-                  <Box
-                    shadow="2"
-                    alignSelf="center"
-                    _text={{
-                      fontSize: "md",
-                      fontWeight: "medium",
-                      color: "warmGray.50",
-                      letterSpacing: "lg",
+                  <Animated.View
+                    style={{
+                      transform: [{ translateX: pan.x }, { translateY: pan.y }],
                     }}
-                    margin="-100"
-                    width="100"
-                    height="100"
-                    zIndex="1000"
-                    bg={["blue.400"]}
+                    {...panResponder.panHandlers}
                   >
-                    <Box>{value}</Box>
-                  </Box>
+                    <View>
+                      <Box
+                        shadow="2"
+                        alignSelf="center"
+                        _text={{
+                          fontSize: "md",
+                          fontWeight: "medium",
+                          color: "warmGray.50",
+                          letterSpacing: "lg",
+                        }}
+                        width="100"
+                        height="100"
+                        zIndex="1000"
+                        bg={["blue.400"]}
+                      >
+                        <Box>{value}aaa</Box>
+                      </Box>
+                    </View>
+                  </Animated.View>
                 )}
               </Box>
             </Stack>

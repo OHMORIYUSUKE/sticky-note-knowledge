@@ -1,5 +1,3 @@
-import "react-native-gesture-handler";
-
 import { QueryClientProvider, QueryClient } from "react-query";
 import { trpc } from "./trpc";
 import { Container, NativeBaseProvider } from "native-base";
