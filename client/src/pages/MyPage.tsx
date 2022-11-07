@@ -58,6 +58,7 @@ const MyPage = () => {
                 }}
               >
                 <Image
+                  alt=""
                   shadow="2"
                   rounded="lg"
                   size={100}
